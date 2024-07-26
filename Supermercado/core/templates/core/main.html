@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+    <main class="container">
+        <h1>CONTROLE DE USUARIO</h1>
+        <div class="row">
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">CADASTRAR USUARIO</h5>
+                <p class="card-text">Cadastrar usuario</p>
+                <a href="{% url 'cadastrar_pessoa' %}" class="btn btn-primary">CADASTRAR USUARIO</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">CADASTRAR VENDEDOR</h5>
+                <p class="card-text">Cadastrar vendedor</p>
+                <a href="{% url 'cadastrar_vendedor' %}" class="btn btn-primary">CADASTRAR VENDEDOR</a>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title">CADASTRAR GERENTE</h5>
+                <p class="card-text">Cadastrar gerente</p>
+                <a href="{% url 'cadastrar_gerente' %}" class="btn btn-primary">CADASTRAR GERENTE</a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </main>
+    <br>
+    <br>
+    <br>
+    <main class="container">
+        <h1>CONTROLE DE ESTOQUE</h1>
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">CADASTRAR PRODUTO</h5>
+                  <p class="card-text">Cadastrar produto para que seja adicionado um tipo de alimento no controle de estoque</p>
+                  <a href="{% url 'cadastrar_produto' %}" class="btn btn-primary">CADASTRAR PRODUTO</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">RELATÓRIO DAS MOVIMENTAÇÕES</h5>
+                  <p class="card-text">Relatório das movimentações, listando data, gerente, tipo de movimentação e mais.</p>
+                  <a href="{%url 'relatorio_movimentacoes' %}" class="btn btn-primary">RELATÓRIO</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">PRODUTOS CADASTRADOS</h5>
+                  <p class="card-text">Lista de produtos cadastrados.</p>
+                  <a href="{%url 'produtos_cadastrados' %}" class="btn btn-primary">PRODUTOS CADASTRADOS</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">COMPRAR PRODUTOS</h5>
+                  <p class="card-text">Compra de produtos.</p>
+                  <a href="{%url 'compra_de_produtos' %}" class="btn btn-primary">COMPRAR PRODUTOS</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ESTOQUE</h5>
+                  <p class="card-text">Todos os produtos que estão no estoque validando data de vencimento, quantidade e nome do produto.</p>
+                  <a href="{%url 'listar_produto' %}" class="btn btn-primary">Estoque</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">VENDER PRODUTO</h5>
+                  <p class="card-text">Venda de produtos, tirando do estoque o valor necessário.</p>
+                  <a href="{%url 'venda_de_produtos' %}" class="btn btn-primary">Vender produto</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>
+
+{% endblock %}

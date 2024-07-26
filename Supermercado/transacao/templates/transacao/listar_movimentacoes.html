@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+{% extends 'core/base.html' %}
+{% block content %}
+    <main class="container">
+        <h1>RELATÓRIO DAS MOVIMENTAÇÕES</h1>
+        {% if listrelatorio %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">TIPO</th>
+                        <th scope="col">VENDEDOR</th>
+                        <th scope="col">PRODUTO</th>
+                        <th scope="col">DESCRIÇÃO</th>
+                        <th scope="col">QUANTIDADE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for aux in listrelatorio %}
+                    {% for x in aux.Produtos %}
+                        <tr>
+                            <td>{{aux.movimentacao}}</td>
+                            <td>{{aux.movimentacao.vendedor.pessoa}}</td>
+                            <td>{{x.produto.nome}}</td>
+                            <td>{{x.produto.descricao}}</td>
+                            <td>{{aux.qtd_de_produtos}}</td>
+                        </tr>    
+                    {% endfor %}   
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                Não há movimentações realizadas 
+            </div>
+            <div class="d-grid gap-2">
+                <a>
+                    <div>
+                        <a href="{%url 'compra_de_produtos' %}" class="btn btn-primary">Comprar produto</a>
+                        <a href="{%url 'venda_de_produtos' %}" class="btn btn-primary">Vender produto</a>
+                        <a href="{%url 'home'  %}" class="btn btn-primary">Ínicio</a>
+                    </div>
+                </a>
+            </div>
+        {% endif%} 
+    </main>
+{% endblock %}

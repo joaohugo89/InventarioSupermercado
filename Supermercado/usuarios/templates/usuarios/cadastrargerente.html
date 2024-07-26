@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+{% extends 'core/base.html' %}
+{% block content %}
+<main class="container">
+    <h1>CADASTRAR GERENTE</h1>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Concluir</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <div class="alert alert-danger" role="alert">
+        Todos os gerentes aqui cadastrados serão responsáveis por controlar a movimentação do sistema! 
+    </div>
+    <br>
+</main>
+{% endblock %}

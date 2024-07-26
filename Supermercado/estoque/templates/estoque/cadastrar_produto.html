@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+{% extends 'core/base.html' %}
+{% block content %}
+
+<main class="container">
+    <h1>CADASTRAR PRODUTO</h1>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Concluir</button>
+    </form>
+    <br>
+    <br>
+</main>
+{% endblock %}

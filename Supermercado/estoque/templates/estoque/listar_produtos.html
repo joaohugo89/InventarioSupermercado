@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+{% extends 'core/base.html' %}
+{% block content %}
+
+<main class="container">
+    <h1>ESTOQUE</h1>
+    <form method="POST">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="search" name ="pesquisa"class="form-control rounded" id ="text" placeholder="pesquisar" aria-label="Search" aria-describedby="search-addon"/>
+        <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+    </div>
+    </form>
+    <br>
+    <div class="card text-dark bg-info mb-3" style="max-width: 18rem;">
+        <div class="card-header">AVISO</div>
+            <div class="card-body">
+                <h5 class="card-title">DATA DE VENCIMENTO</h5>
+                <p class="card-text">Produtos que estão com a linha vermelha é que estão vencidos.</p>
+                <p class="card-text">Produtos que estão com a linha amarela é que estão perto de vencer.</p>
+                <p class="card-text">Produtos que estão com a linha verde é que estão longe da data de vencimento.</p>
+            </div>
+        </div>
+    {% if listProdutoEstoque %}
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">PRODUTO</th>
+                <th scope="col">QUANTIDADE</th>
+                <th scope="col">DATA DE VALIDADE</th>
+                <th scope="col">DIAS RESTANTE VENCIMENTO</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aux in listProdutoEstoque %}
+            {% if aux.DiasVenc == 0 %}
+                <tr class="table-danger"></tr>
+            {% elif aux.DiasVenc > 5 %}
+                <tr class="table-warning"></tr>
+            {% else %}
+                <tr class="table-success"></tr>
+            {% endif %}
+                <td>{{aux.Produto.produto.nome}}</td>
+                <td>{{aux.Produto.quantidade}}</td>
+                <td>{{aux.Produto.data_de_validade}}</td>
+                <td>{{aux.DiasVenc}}</td>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-info" role="alert">
+            Não há produtos no estoque 
+        </div>
+        <div class="d-grid gap-2">
+        <a href="{% url 'cadastrar_produto' %}">
+            <button class="btn btn-primary" type="button">CADASTRAR PRODUTO</button>
+        </a>
+    </div>
+    {% endif%} 
+    <br>
+    <br> 
+</main>
+<br>
+<br>
+
+{% endblock %}

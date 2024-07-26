@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% extends 'core/base.html' %}
+{% block content %}
+<script>
+    $('document').ready(function() {        
+        $("#id_cpf").mask("999.999.999-99");
+})
+       
+</script>
+<main class="container">
+    <h1>CADASTRAR USUÁRIO</h1>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Concluir</button>
+    </form>
+    <br>
+</main>
+
+{% endblock %}
